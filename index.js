@@ -17,5 +17,7 @@ stopBtn.addEventListener('click', () => {
   pomodoro.stop();
 });
 resetBtn.addEventListener('click', () => {
+  document.querySelectorAll('.min')[0].innerText = '25';
+  document.querySelectorAll('.sec')[0].innerText = '00';
   pomodoro.reset();
 });
