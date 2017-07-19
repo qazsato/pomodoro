@@ -35,6 +35,7 @@ body {
   font-size: 200px;
   line-height: 200px;
   color: #2C3E50;
+  letter-spacing: 20px;
 }
 
 .timer-content > span {
@@ -42,20 +43,28 @@ body {
 }
 
 .timer-content > .min {
-  width: 250px;
+  width: 270px;
   position: relative;
   top: 30px;
-  left: 60px;
+  left: 80px;
 }
 
 .timer-content > .sec {
-  width: 250px;
+  width: 270px;
   position: relative;
   top: 30px;
-  right: 60px;
+  right: 80px;
 }
 
 .button-content {
   width: 100%;
   text-align: center;
+}
+
+.button-content .mdl-button {
+  height: 50px;
+  min-width: 128px;
+  margin: 0 6px;
+  padding-bottom: 10px;
+  font-size: 22px;
 }
