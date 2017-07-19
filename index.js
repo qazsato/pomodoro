@@ -1,8 +1,9 @@
 const pomodoro = new Pomodoro(function (remainTime) {
   const time = Math.round(this.remainTime / 1000);
   const min = Math.floor(time / 60);
-  const sec = time % 60;
-  console.log('残り時間', `${min} : ${sec}`);
+  let sec = time % 60;
+  sec = sec < 10 ? `0${sec}`: sec;
+  document.querySelectorAll('.timer-content')[0].innerText = `${min}:${sec}`;
 });
 
 const startBtn = document.querySelectorAll('#start')[0];

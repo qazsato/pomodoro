@@ -1,0 +1,11 @@
+.timer-content {
+  margin: 100px auto;
+  height: 200px;
+  text-align: center;
+  font-size: 200px;
+  line-height: 200px;
+}
+.button-content {
+  width: 100%;
+  text-align: center;
+}
