@@ -12,6 +12,7 @@ class Pomodoro {
 
   start() {
     if (this.intervalID) return;
+    this._count();
     this.intervalID = setInterval(() => this._count(), 1000);
   }
 
@@ -19,6 +20,7 @@ class Pomodoro {
     if (!this.intervalID) return;
     clearInterval(this.intervalID);
     this.intervalID = null;
+    this.prevTime = null;
   }
 
   reset() {
