@@ -1,11 +1,11 @@
 @font-face {
 	font-family: 'ikamodoki';
-	src: url(./fonts/ikamodoki.ttf);
+	src: url(../fonts/ikamodoki.ttf);
 }
 
 @font-face {
 	font-family: 'Paintball';
-	src: url(./fonts/Paintball.otf);
+	src: url(../fonts/Paintball.otf);
 }
 
 * {
