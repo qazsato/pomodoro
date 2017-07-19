@@ -1,10 +1,60 @@
+@font-face {
+	font-family: 'ikamodoki';
+	src: url(./fonts/ikamodoki.ttf);
+}
+
+@font-face {
+	font-family: 'Paintball';
+	src: url(./fonts/Paintball.otf);
+}
+
+* {
+	font-family: 'ikamodoki', 'Paintball' !important;
+	font-weight: bold !important;
+}
+
+body {
+  background-color: #fdf6e3;
+}
+
+.material-icons {
+	font-family: 'Material Icons' !important;
+}
+
+.mdl-layout-title {
+  position: relative;
+  top: -7px;
+  margin-left: 10px;
+  font-size: 25px;
+}
+
 .timer-content {
   margin: 100px auto;
-  height: 200px;
+  height: 260px;
   text-align: center;
   font-size: 200px;
   line-height: 200px;
+  color: #2C3E50;
 }
+
+.timer-content > span {
+  display: inline-block;
+}
+
+.timer-content > .min {
+  width: 250px;
+  position: relative;
+  top: 30px;
+  left: 60px;
+}
+
+.timer-content > .sec {
+  width: 250px;
+  position: relative;
+  top: 30px;
+  right: 60px;
+}
+
 .button-content {
   width: 100%;
   text-align: center;
