@@ -1,10 +1,7 @@
 const TIME = {
-  // POMODORO: 25 * 60,
-  // BREAK_SHORT: 5 * 60,
-  // BREAK_LONG: 30 * 60
-  POMODORO: 3,
-  BREAK_SHORT: 3,
-  BREAK_LONG: 3
+  POMODORO: 25 * 60,
+  BREAK_SHORT: 5 * 60,
+  BREAK_LONG: 15 * 60
 };
 
 const STATUS = {
@@ -18,32 +15,37 @@ class Pomodoro {
     this.callback = callback;
     this.intervalID = null;
     this.prevTime = null;
-    this.count = {
-      pomodoro: 0,
-      break: 0
-    };
+    this.count = {pomodoro: 0, break: 0};
     this.status = this._getStatus();
     this.remainTime = this._getRemainTime();
   }
-
+  /**
+   * ポモドーロを開始します。
+   */
   start() {
     if (this.intervalID) return;
-    this._count();
-    this.intervalID = setInterval(() => this._count(), 1000);
+    this._update();
+    this.intervalID = setInterval(() => this._update(), 1000);
   }
-
+  /**
+   * ポモドーロを停止します。
+   */
   stop() {
     if (!this.intervalID) return;
     clearInterval(this.intervalID);
     this.intervalID = null;
     this.prevTime = null;
   }
-
+  /**
+   * ポモドーロをリセットします。
+   */
   reset() {
     this.remainTime = this._getRemainTime();
   }
-
-  _count() {
+  /**
+   * 経過時間に対して内部情報を更新します。
+   */
+  _update() {
     if (!this.prevTime) {
       this.prevTime = this._getTime();
       return;
@@ -54,22 +56,20 @@ class Pomodoro {
     this.callback(this.status, this.remainTime);
     this.prevTime = nextTime;
     if (this.remainTime === 0) {
-      if (this.status === STATUS.POMODORO) {
-        this.count.pomodoro++;
-      } else {
-        this.count.break++;
-      }
+      (this.status === STATUS.POMODORO) ? this.count.pomodoro++ : this.count.break++;
       this.status = this._getStatus();
-      this.remainTime = this._getRemainTime();
-    } else {
-      
+      this.remainTime = this._getRemainTime();  
     }
   }
-
+  /**
+   * 現在時刻の時刻差を秒単位で取得します。
+   */
   _getTime() {
     return Math.round(new Date().getTime() / 1000);
   }
-
+  /**
+   * ポモドーロステータスを取得します。
+   */
   _getStatus() {
     let status;
     if (this.count.pomodoro === this.count.break) {
@@ -81,7 +81,9 @@ class Pomodoro {
     }
     return status;
   }
-
+  /**
+   * ポモドーロステータスに紐付く時間を取得します。
+   */
   _getRemainTime() {
     let time;
     if (this.status === STATUS.POMODORO) {
