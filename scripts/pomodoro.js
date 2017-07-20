@@ -43,6 +43,12 @@ class Pomodoro {
     this.remainTime = this._getRemainTime();
   }
   /**
+   * ポモドーロの実績を取得します。
+   */
+  getCount() {
+    return this.count;
+  }
+  /**
    * 経過時間に対して内部情報を更新します。
    */
   _update() {
