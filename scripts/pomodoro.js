@@ -52,14 +52,14 @@ class Pomodoro {
     }
     const nextTime = this._getTime();
     const diffTime = nextTime - this.prevTime;
-    this.remainTime = (this.remainTime - diffTime) < 0 ? 0 : (this.remainTime - diffTime);
-    this.callback(this.status, this.remainTime);
+    this.remainTime = this.remainTime - diffTime;
     this.prevTime = nextTime;
-    if (this.remainTime === 0) {
+    if (this.remainTime <= 0) {
       (this.status === STATUS.POMODORO) ? this.count.pomodoro++ : this.count.break++;
       this.status = this._getStatus();
-      this.remainTime = this._getRemainTime();  
+      this.remainTime = this._getRemainTime();
     }
+    this.callback(this.status, this.remainTime);
   }
   /**
    * 現在時刻の時刻差を秒単位で取得します。
