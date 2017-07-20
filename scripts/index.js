@@ -5,24 +5,25 @@ window.onload = () => {
     sec = sec < 10 ? `0${sec}`: sec;
     document.querySelectorAll('.min')[0].innerText = `${min}`;
     document.querySelectorAll('.sec')[0].innerText = `${sec}`;
-    // if (remainSec <= 0) {
-    //   setTimeout(() => alert('end')); // HACK 0:00時点のDOM書き換えがalertで阻止され描画されないためtimeoutで逃がす
-    // }
+    if (remainSec <= 0) {
+      setTimeout(() => alert('end')); // HACK 0:00時点のDOM書き換えがalertで阻止され描画されないためtimeoutで逃がす
+    }
   });
   setDefaultTime();
 
-  const startBtn = document.querySelectorAll('#start')[0];
-  const stopBtn = document.querySelectorAll('#stop')[0];
-  const resetBtn = document.querySelectorAll('#reset')[0];
-  startBtn.addEventListener('click', () => {
-    pomodoro.start();
-  });
-  stopBtn.addEventListener('click', () => {
-    pomodoro.stop();
-  });
-  resetBtn.addEventListener('click', () => {
-    setDefaultTime();
-    pomodoro.reset();
+  const pomodoroBtn = document.querySelectorAll('#pomodoro-btn')[0];
+  let isRunning = false;
+  pomodoroBtn.addEventListener('click', () => {
+    if (isRunning) {
+      pomodoro.stop();
+      pomodoro.reset();
+      setDefaultTime();
+      pomodoroBtn.innerText = 'START';
+    } else {
+      pomodoro.start();
+      pomodoroBtn.innerText = 'STOP';
+    }
+    isRunning = !isRunning;
   });
 };
 

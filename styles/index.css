@@ -28,9 +28,13 @@ body {
   font-size: 25px;
 }
 
+.tomato-content {
+  margin-top: 80px;
+  margin-bottom: 60px;
+  text-align: center;
+}
+
 .timer-content {
-  margin: 100px auto;
-  height: 260px;
   text-align: center;
   font-size: 200px;
   line-height: 200px;
@@ -45,18 +49,24 @@ body {
 .timer-content > .min {
   width: 270px;
   position: relative;
-  top: 30px;
   left: 80px;
+  text-align: right;
+}
+
+.timer-content > .colon {
+  position: relative;
+  top: -20px;
 }
 
 .timer-content > .sec {
   width: 270px;
   position: relative;
-  top: 30px;
   right: 80px;
+  text-align: left;
 }
 
 .button-content {
+  margin-top: 100px;
   width: 100%;
   text-align: center;
 }
