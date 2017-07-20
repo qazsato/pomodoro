@@ -34,8 +34,8 @@ class Pomodoro {
     }
     const nextTime = new Date().getTime();
     const diffTime = nextTime - this.prevTime;
-    this.remainTime = (this.remainTime - diffTime);
-    this.callback(this.remainTime);
+    this.remainTime = (this.remainTime - diffTime) < 0 ? 0 : (this.remainTime - diffTime);
+    this.callback(Math.round(this.remainTime / 1000));
     this.prevTime = nextTime;
   }
 }
